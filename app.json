@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "my-pocket-book",
+    "slug": "my-pocket-book",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
