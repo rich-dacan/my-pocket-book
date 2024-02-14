@@ -6,7 +6,7 @@ const { Navigator, Screen } = createNativeStackNavigator();
 const AppRouter = () => {
   return (
     <Navigator>
-      <Screen name="home" component={Home} />
+      <Screen name="home" component={Home} options={{ headerShown: false }} />
     </Navigator>
   );
 };

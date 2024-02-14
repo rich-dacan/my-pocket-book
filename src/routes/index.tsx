@@ -9,7 +9,7 @@ const Routes = () => {
 
   return (
     <NavigationContainer>
-      {user ? <AppRouter /> : <SignIn />}
+      {!user ? <AppRouter /> : <SignIn />}
     </NavigationContainer>
   );
 };

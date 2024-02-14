@@ -20,7 +20,7 @@ const SignIn = (): ReactElement => {
   };
 
   return (
-    <VStack flex={1} bg={"gray.700"} alignItems={"center"} px={8} py={24}>
+    <VStack flex={1} bg={"gray.800"} alignItems={"center"} px={8} py={24}>
       <Image source={Logo} alt="Logo" resizeMode="contain" size={"2xl"} />
 
       <Heading color={"#fff"} mb={8}>
@@ -59,6 +59,8 @@ const SignIn = (): ReactElement => {
       <Button
         buttonText="Sign In"
         color={"#fff"}
+        bgColor={"secondary.900"}
+        bgPressed="secondary.300"
         w={"full"}
         isLoading={loading}
         onPress={() => handleSignIn()}
