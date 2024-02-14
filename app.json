@@ -7,7 +7,18 @@
       "**/*"
     ],
     "plugins": [
-      "expo-font"
-    ]
+      "expo-font",
+      "@react-native-firebase/app"
+    ],
+    "android": {
+      "package": "com.my-pocket-book",
+      "googleServicesFile": "./google-services.json",
+      "versionCode": 1
+    },
+    "ios": {
+      "bundleIdentifier": "com.my-pocket-book",
+      "googleServicesFile": "./GoogleService-Info.plist",
+      "buildNumber": "1.0.0"
+    }
   }
 }

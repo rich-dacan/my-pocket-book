@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "622507743831",
+    "project_id": "mypocketbooks-b49f8",
+    "storage_bucket": "mypocketbooks-b49f8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:622507743831:android:1f58a5e3f46ffcfd5da112",
+        "android_client_info": {
+          "package_name": "com.company.myPocketBooks"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBNrE10XBXVUcFQPgMXXI_I7aW069GE0kA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

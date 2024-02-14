@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyCup4LVWd3x1uUKy2s2K3L3CajtzmLzjlw</string>
+	<key>GCM_SENDER_ID</key>
+	<string>622507743831</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.company.myPocketBook</string>
+	<key>PROJECT_ID</key>
+	<string>mypocketbooks-b49f8</string>
+	<key>STORAGE_BUCKET</key>
+	<string>mypocketbooks-b49f8.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:622507743831:ios:048ab322d44fc3a05da112</string>
+</dict>
+</plist>
