@@ -11,6 +11,7 @@ import {
 } from "native-base";
 
 import { ClockAfternoon, Hourglass, CheckCircle } from "phosphor-react-native";
+import { dateFormatBRString } from "../../utils/dates";
 
 export type BookProps = {
   id: string;
@@ -30,8 +31,6 @@ const Book = ({ data, ...rest }: Props): ReactElement => {
   const statusColor =
     data.status === "reading" ? colors.secondary[100] : colors.secondary[400];
 
-  console.log("data", data.status);
-
   return (
     <Pressable {...rest}>
       <HStack
@@ -48,10 +47,10 @@ const Book = ({ data, ...rest }: Props): ReactElement => {
           <Text color={"#fff"} fontSize={"md"} fontWeight={"bold"}>
             {data.title}
           </Text>
-          <HStack mt={1}>
+          <HStack mt={1} alignItems={"center"}>
             <ClockAfternoon size={16} color={colors.gray[400]} />
             <Text ml={1} color={colors.gray[400]} fontSize={"sm"}>
-              {data.when}
+              {dateFormatBRString(data.when)}
             </Text>
           </HStack>
           {/* <Text color={"gray.400"} fontSize={"sm"}>
