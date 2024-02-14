@@ -54,7 +54,6 @@ const Home = (): ReactElement => {
   const navigation = useNavigation();
 
   const handleOpenDetails = (bookId: string) => {
-    console.log("Open Book Details", bookId);
     navigation.navigate("book-details", { bookId });
   };
 
