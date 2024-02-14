@@ -1,22 +1,23 @@
-import React, { ReactElement } from "react";
+import React, { ReactElement, useState } from "react";
 import { Heading, Icon, VStack, useTheme, Image } from "native-base";
 import Input from "../../components/Input";
 import { Envelope, Key } from "phosphor-react-native";
 
 import Logo from "../../assets/book-logo.png";
+import Button from "../../components/Button";
 
 const SignIn = (): ReactElement => {
+  const [loading, setLoading] = useState(false);
+
   const { colors } = useTheme();
 
   return (
     <VStack flex={1} bg={"gray.700"} alignItems={"center"} px={8} py={24}>
-      <Image
-        source={Logo}
-        alt="Logo"
-        resizeMode="contain"
-        size={"2xl"}
-        mb={8}
-      />
+      <Image source={Logo} alt="Logo" resizeMode="contain" size={"2xl"} />
+
+      <Heading color={"#fff"} mb={8}>
+        Welcome back!
+      </Heading>
 
       <Input
         placeholder="Type your mail"
@@ -45,6 +46,14 @@ const SignIn = (): ReactElement => {
         }
         autoCorrect={false}
         mb={4}
+      />
+
+      <Button
+        buttonText="Sign In"
+        color={"#fff"}
+        w={"full"}
+        isLoading={loading}
+        onPress={() => setLoading(true)}
       />
     </VStack>
   );
