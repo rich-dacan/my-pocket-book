@@ -17,6 +17,7 @@ import Filter from "../../components/Filters";
 import Book, { BookProps } from "../../components/Book";
 import Button from "../../components/Button";
 import Loading from "../../components/Loading";
+import { useNavigation } from "@react-navigation/native";
 
 const Home = (): ReactElement => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -51,6 +52,7 @@ const Home = (): ReactElement => {
   ]);
 
   const { colors } = useTheme();
+  const navigation = useNavigation();
 
   return (
     <VStack flex={1} bg={"gray.800"} px={8} py={20}>
@@ -128,7 +130,7 @@ const Home = (): ReactElement => {
           bgPressed={colors.secondary[300]}
           marginTop={8}
           onPress={() => {
-            console.log("Add Book");
+            navigation.navigate("add-book");
           }}
         />
       </VStack>
