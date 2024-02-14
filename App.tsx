@@ -7,6 +7,7 @@ import {
 } from "@expo-google-fonts/roboto";
 import { THEME } from "./src/styles/theme";
 import Loading from "./src/components/Loading";
+import SignIn from "./src/screens/SignIn";
 
 const App = (): JSX.Element => {
   const [fontsLoaded] = useFonts({
@@ -22,15 +23,7 @@ const App = (): JSX.Element => {
         translucent
       />
 
-      {fontsLoaded ? (
-        <VStack flex={1} bg={"gray.700"} alignItems={"center"} px={8} py={24}>
-          <Heading color="gray.100" size="4xl" mt={20} mb={6}>
-            Welcome to NativeBase!
-          </Heading>
-        </VStack>
-      ) : (
-        <Loading />
-      )}
+      {fontsLoaded ? <SignIn /> : <Loading />}
     </NativeBaseProvider>
   );
 };
