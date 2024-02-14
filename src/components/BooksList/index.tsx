@@ -6,17 +6,24 @@ import { ChatTeardropText } from "phosphor-react-native";
 type Props = {
   data: BookProps[];
   statusSelected: string;
+  handleOpenDetails: (id: string) => void;
 };
 
-const BooksList = ({ data, statusSelected }: Props): ReactElement => {
+const BooksList = ({
+  data,
+  statusSelected,
+  handleOpenDetails,
+}: Props): ReactElement => {
   const { colors } = useTheme();
 
   return (
     <FlatList
-      data={data.filter(book => book.status === statusSelected)}
       // data={books}
+      data={data.filter(book => book.status === statusSelected)}
       keyExtractor={item => item.id}
-      renderItem={({ item }) => <Book data={item} />}
+      renderItem={({ item }) => (
+        <Book data={item} onPress={() => handleOpenDetails(item.id)} />
+      )}
       contentContainerStyle={{ paddingBottom: 100 }}
       ListEmptyComponent={() => (
         <Center flex={1} pt={38}>

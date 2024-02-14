@@ -10,7 +10,7 @@ const AppRouter = () => {
     <Navigator>
       <Screen name="home" component={Home} options={{ headerShown: false }} />
       <Screen
-        name="details"
+        name="book-details"
         component={Details}
         options={{ headerShown: false }}
       />

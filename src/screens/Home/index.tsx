@@ -53,6 +53,11 @@ const Home = (): ReactElement => {
   const { colors } = useTheme();
   const navigation = useNavigation();
 
+  const handleOpenDetails = (bookId: string) => {
+    console.log("Open Book Details", bookId);
+    navigation.navigate("book-details", { bookId });
+  };
+
   return (
     <VStack flex={1} bg={"gray.800"} px={8} py={20}>
       <HStack
@@ -103,7 +108,11 @@ const Home = (): ReactElement => {
         {isLoading ? (
           <Loading />
         ) : (
-          <BooksList data={books} statusSelected={statusSelected} />
+          <BooksList
+            data={books}
+            handleOpenDetails={handleOpenDetails}
+            statusSelected={statusSelected}
+          />
         )}
 
         <Button
