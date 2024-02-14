@@ -62,10 +62,8 @@ const Home = (): ReactElement => {
         bg={"gray.800"}
         borderBottomWidth={1}
         borderBottomStyle={"solid"}
-        borderBottomColor={"gray.700"}
-        // pt={6}
-        pb={8}
-        px={6}
+        borderBottomColor={"secondary.100"}
+        pb={4}
       >
         <Image source={Logo} alt="Logo" resizeMode="contain" size={"sm"} />
 
@@ -77,51 +75,63 @@ const Home = (): ReactElement => {
         />
       </HStack>
 
-      <HStack space={3} my={8}>
-        <Filter
-          title="Reading"
-          type="reading"
-          onPress={() => setStatusSelected("reading")}
-          isActive={statusSelected === "reading"}
-        />
-        <Filter
-          title="Finished"
-          type="finished"
-          onPress={() => setStatusSelected("finished")}
-          isActive={statusSelected === "finished"}
-        />
-      </HStack>
+      <VStack>
+        <HStack justifyContent={"space-between"} alignItems={"center"} mt={8}>
+          <Heading color={"#fff"} fontSize={"2xl"}>
+            My Books
+          </Heading>
+          <Text color={"gray.400"} fontSize={"sm"}>
+            {books.filter(book => book.status === statusSelected).length} books
+          </Text>
+        </HStack>
+        <HStack space={3} my={8}>
+          <Filter
+            title="Reading"
+            type="reading"
+            onPress={() => setStatusSelected("reading")}
+            isActive={statusSelected === "reading"}
+          />
+          <Filter
+            title="Finished"
+            type="finished"
+            onPress={() => setStatusSelected("finished")}
+            isActive={statusSelected === "finished"}
+          />
+        </HStack>
 
-      {isLoading ? (
-        <Loading />
-      ) : (
-        <FlatList
-          data={books.filter(book => book.status === statusSelected)}
-          keyExtractor={item => item.id}
-          renderItem={({ item }) => <Book data={item} />}
-          contentContainerStyle={{ paddingBottom: 100 }}
-          ListEmptyComponent={() => (
-            <Center flex={1} pt={38}>
-              <ChatTeardropText size={64} color={colors.gray[400]} />
-              <Text color={"gray.400"} fontSize={"lg"} mt={6}>
-                {statusSelected === "reading"
-                  ? "No books to read"
-                  : "No books finished"}
-              </Text>
-            </Center>
-          )}
-        />
-      )}
+        {isLoading ? (
+          <Loading />
+        ) : (
+          <FlatList
+            data={books.filter(book => book.status === statusSelected)}
+            // data={books}
+            keyExtractor={item => item.id}
+            renderItem={({ item }) => <Book data={item} />}
+            contentContainerStyle={{ paddingBottom: 100 }}
+            ListEmptyComponent={() => (
+              <Center flex={1} pt={38}>
+                <ChatTeardropText size={64} color={colors.gray[400]} />
+                <Text color={"gray.400"} fontSize={"lg"} mt={6}>
+                  {statusSelected === "reading"
+                    ? "No books to read"
+                    : "No books finished"}
+                </Text>
+              </Center>
+            )}
+          />
+        )}
 
-      <Button
-        marginTop={8}
-        buttonText="Add Book"
-        bgColor={colors.secondary[100]}
-        bgPressed={colors.secondary[200]}
-        onPress={() => {
-          console.log("Add Book");
-        }}
-      />
+        <Button
+          buttonText="Add Book"
+          color={colors.gray[700]}
+          bgColor={colors.secondary[200]}
+          bgPressed={colors.secondary[300]}
+          marginTop={8}
+          onPress={() => {
+            console.log("Add Book");
+          }}
+        />
+      </VStack>
     </VStack>
   );
 };

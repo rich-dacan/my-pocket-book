@@ -23,7 +23,7 @@ const Filter = ({
   return (
     <Button
       variant="outline"
-      borderWidth={isActive ? 1 : 0}
+      borderWidth={!isActive ? 1 : 0}
       borderColor={colorType}
       bgColor={isActive ? `${colorType}` : "transparent"}
       flex={1}
