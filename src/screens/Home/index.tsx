@@ -1,25 +1,59 @@
 import React, { ReactElement, useState } from "react";
 import {
+  Center,
+  FlatList,
   HStack,
   Heading,
   IconButton,
   Image,
+  Text,
   VStack,
   useTheme,
 } from "native-base";
 
 import Logo from "../../assets/book-logo.png";
-import { SignOut } from "phosphor-react-native";
+import { ChatTeardropText, SignOut } from "phosphor-react-native";
 import Filter from "../../components/Filters";
+import Book, { BookProps } from "../../components/Book";
+import Button from "../../components/Button";
+import Loading from "../../components/Loading";
 
 const Home = (): ReactElement => {
-  const { colors } = useTheme();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [statusSelected, setStatusSelected] = useState<"reading" | "finished">(
     "reading"
   );
+  const [books, setBooks] = useState<BookProps[]>([
+    {
+      id: "1",
+      title: "Harry Potter and the Philosopher's Stone",
+      description:
+        "Harry Potter has no idea how famous he is. That's because he's being raised by his miserable aunt and uncle who are terrified Harry will learn that he's really a wizard, just as his parents were.",
+      when: "2021-09-29T00:00:00.000Z",
+      status: "reading",
+    },
+    {
+      id: "2",
+      title: "Harry Potter and the Chamber of Secrets",
+      description:
+        "The Dursleys were so mean and hideous that summer that all Harry Potter wanted was to get back to the Hogwarts School for Witchcraft and Wizardry.",
+      when: "2021-09-29T00:00:00.000Z",
+      status: "reading",
+    },
+    {
+      id: "3",
+      title: "Harry Potter and the Prisoner of Azkaban",
+      description:
+        "For twelve long years, the dread fortress of Azkaban held an infamous prisoner named Sirius Black.",
+      when: "2021-09-29T00:00:00.000Z",
+      status: "finished",
+    },
+  ]);
+
+  const { colors } = useTheme();
 
   return (
-    <VStack flex={1} bg={"gray.800"} alignItems={"center"} px={8} py={24}>
+    <VStack flex={1} bg={"gray.800"} px={8} py={20}>
       <HStack
         w="full"
         h={18}
@@ -49,12 +83,44 @@ const Home = (): ReactElement => {
           type="reading"
           isActive={statusSelected === "reading"}
         />
-        <Filter title="Finished" type="finished" />
+        <Filter
+          title="Finished"
+          type="finished"
+          isActive={statusSelected === "finished"}
+        />
       </HStack>
 
-      <Heading color={"#fff"} my={8}>
-        Home
-      </Heading>
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <FlatList
+          // data={books.filter((book) => book.status === statusSelected)}
+          data={books}
+          keyExtractor={item => item.id}
+          renderItem={({ item }) => <Book data={item} />}
+          contentContainerStyle={{ paddingBottom: 100 }}
+          ListEmptyComponent={() => (
+            <Center flex={1} pt={38}>
+              <ChatTeardropText size={64} color={colors.gray[400]} />
+              <Text color={"gray.400"} fontSize={"lg"} mt={6}>
+                {statusSelected === "reading"
+                  ? "No books to read"
+                  : "No books finished"}
+              </Text>
+            </Center>
+          )}
+        />
+      )}
+
+      <Button
+        marginTop={8}
+        buttonText="Add Book"
+        bgColor={colors.secondary[100]}
+        bgPressed={colors.secondary[200]}
+        onPress={() => {
+          console.log("Add Book");
+        }}
+      />
     </VStack>
   );
 };
