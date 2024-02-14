@@ -1,15 +1,23 @@
 import React, { ReactElement, useState } from "react";
 import { Heading, Icon, VStack, useTheme, Image } from "native-base";
-import Input from "../../components/Input";
-import { Envelope, Key } from "phosphor-react-native";
+import { useNavigation } from "@react-navigation/native";
 
+import Input from "../../components/Input";
 import Logo from "../../assets/book-logo.png";
 import Button from "../../components/Button";
+import { Envelope, Key } from "phosphor-react-native";
 
 const SignIn = (): ReactElement => {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const { colors } = useTheme();
+  const navigation = useNavigation();
+
+  const handleSignIn = () => {
+    setLoading(true);
+
+    navigation.navigate("home");
+  };
 
   return (
     <VStack flex={1} bg={"gray.700"} alignItems={"center"} px={8} py={24}>
@@ -53,7 +61,7 @@ const SignIn = (): ReactElement => {
         color={"#fff"}
         w={"full"}
         isLoading={loading}
-        onPress={() => setLoading(true)}
+        onPress={() => handleSignIn()}
       />
     </VStack>
   );

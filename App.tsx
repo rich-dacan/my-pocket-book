@@ -7,7 +7,7 @@ import {
 } from "@expo-google-fonts/roboto";
 import { THEME } from "./src/styles/theme";
 import Loading from "./src/components/Loading";
-import SignIn from "./src/screens/SignIn";
+import Routes from "./src/routes";
 
 const App = (): JSX.Element => {
   const [fontsLoaded] = useFonts({
@@ -23,7 +23,7 @@ const App = (): JSX.Element => {
         translucent
       />
 
-      {fontsLoaded ? <SignIn /> : <Loading />}
+      {fontsLoaded ? <Routes /> : <Loading />}
     </NativeBaseProvider>
   );
 };
