@@ -1,7 +1,5 @@
 import React, { ReactElement, useState } from "react";
 import {
-  Center,
-  FlatList,
   HStack,
   Heading,
   IconButton,
@@ -12,12 +10,13 @@ import {
 } from "native-base";
 
 import Logo from "../../assets/book-logo.png";
-import { ChatTeardropText, SignOut } from "phosphor-react-native";
+import { SignOut } from "phosphor-react-native";
 import Filter from "../../components/Filters";
-import Book, { BookProps } from "../../components/Book";
+import { BookProps } from "../../components/Book";
 import Button from "../../components/Button";
 import Loading from "../../components/Loading";
 import { useNavigation } from "@react-navigation/native";
+import BooksList from "../../components/BooksList";
 
 const Home = (): ReactElement => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -104,23 +103,7 @@ const Home = (): ReactElement => {
         {isLoading ? (
           <Loading />
         ) : (
-          <FlatList
-            data={books.filter(book => book.status === statusSelected)}
-            // data={books}
-            keyExtractor={item => item.id}
-            renderItem={({ item }) => <Book data={item} />}
-            contentContainerStyle={{ paddingBottom: 100 }}
-            ListEmptyComponent={() => (
-              <Center flex={1} pt={38}>
-                <ChatTeardropText size={64} color={colors.gray[400]} />
-                <Text color={"gray.400"} fontSize={"lg"} mt={6}>
-                  {statusSelected === "reading"
-                    ? "No books to read"
-                    : "No books finished"}
-                </Text>
-              </Center>
-            )}
-          />
+          <BooksList data={books} statusSelected={statusSelected} />
         )}
 
         <Button
