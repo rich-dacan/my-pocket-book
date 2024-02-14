@@ -81,11 +81,13 @@ const Home = (): ReactElement => {
         <Filter
           title="Reading"
           type="reading"
+          onPress={() => setStatusSelected("reading")}
           isActive={statusSelected === "reading"}
         />
         <Filter
           title="Finished"
           type="finished"
+          onPress={() => setStatusSelected("finished")}
           isActive={statusSelected === "finished"}
         />
       </HStack>
@@ -94,8 +96,7 @@ const Home = (): ReactElement => {
         <Loading />
       ) : (
         <FlatList
-          // data={books.filter((book) => book.status === statusSelected)}
-          data={books}
+          data={books.filter(book => book.status === statusSelected)}
           keyExtractor={item => item.id}
           renderItem={({ item }) => <Book data={item} />}
           contentContainerStyle={{ paddingBottom: 100 }}

@@ -18,7 +18,7 @@ const Filter = ({
   const { colors } = useTheme();
 
   const colorType =
-    type === "reading" ? colors.secondary[100] : colors.gray[400];
+    type === "reading" ? colors.secondary[100] : colors.secondary[200];
 
   return (
     <Button
